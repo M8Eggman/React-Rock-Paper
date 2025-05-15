@@ -11,7 +11,7 @@ function DivJetons(props) {
         {props.array
           .filter((filter) => filter.choice === props.userChoice)
           .map((element, index) => (
-            <Jeton key={index} img={element.img} color={element.color} size={300} />
+            <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300} />
           ))}
       </div>
       <div className="winOrLose">
@@ -24,7 +24,7 @@ function DivJetons(props) {
         {props.array
           .filter((filter) => filter.choice === props.computerChoice)
           .map((element, index) => (
-            <Jeton key={index} img={element.img} color={element.color} size={300} />
+            <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300} />
           ))}
       </div>
     </div>

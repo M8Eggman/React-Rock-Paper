@@ -111,6 +111,7 @@ function App() {
     <>
       <Score score={score} choice={userChoice} />
       <DivJetons handleClick={handleClick} launchGame={launchGame} array={array} userChoice={userChoice} computerChoice={computerChoice} game={game} result={result} gameType={gameType} />
+      {/* modal qui s'affiche selon ruleShow */}
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
       <div className="options">
         <button onClick={handleGameType} className="gameModeChange">
