@@ -1,0 +1,24 @@
+.divJeton {
+  margin-top: 50px;
+  background-image: url("../../assets/images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: center;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+.jeton {
+  position: absolute;
+}
+.jeton0-3 {
+  left: 0px;
+}
+.jeton1-3 {
+  right: 0px;
+}
+.jeton2-3 {
+  bottom: 50px;
+}
