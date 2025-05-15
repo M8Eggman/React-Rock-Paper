@@ -1,19 +1,17 @@
 import "./DivJetons.css";
 import Jeton from "../jeton/Jeton";
-import bgTriangle from "../../assets/images/bg-triangle.svg";
-import bgPentagone from "../../assets/images/bg-pentagon.svg";
 
 function DivJetons(props) {
   // selon si le jeu est lancer va afficher les choix ou le resultat
   return props.game ? (
-    <div className="divGame" style={{ backgroundImage: props.gameType ? `url(${bgTriangle})` : `url(${bgPentagone})` }}>
+    <div className="divGame">
       <div className="userChoice">
         <p>YOU PICKED</p>
         {/* affiche que le jeton qui est le choix de l'user */}
         {props.array
           .filter((filter) => filter.choice === props.userChoice)
           .map((element, index) => (
-            <Jeton key={index} img={element.img} color={element.color} />
+            <Jeton key={index} img={element.img} color={element.color} size={300} />
           ))}
       </div>
       <div className="winOrLose">
@@ -26,14 +24,24 @@ function DivJetons(props) {
         {props.array
           .filter((filter) => filter.choice === props.computerChoice)
           .map((element, index) => (
-            <Jeton key={index} img={element.img} color={element.color} />
+            <Jeton key={index} img={element.img} color={element.color} size={300} />
           ))}
       </div>
     </div>
   ) : (
-    <div className="divJeton">
+    <div className={props.gameType ? "divJeton bgTriangle" : "divJeton bgPentagone"}>
       {props.array.map((element) => (
-        <Jeton handleClick={props.handleClick} launchGame={props.launchGame} array={props.array} key={element.choice} id={element.choice} img={element.img} color={element.color} position={element.position} />
+        <Jeton
+          handleClick={props.handleClick}
+          launchGame={props.launchGame}
+          array={props.array}
+          key={element.choice}
+          id={element.choice}
+          img={element.img}
+          color={element.color}
+          position={element.position}
+          size={props.gameType ? 200 : 175}
+        />
       ))}
     </div>
   );

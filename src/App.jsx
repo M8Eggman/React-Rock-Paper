@@ -9,28 +9,24 @@ import spock from "./assets/images/icon-spock.svg";
 import { useEffect, useState } from "react";
 
 function App() {
+  // change le choix de l'utilisateur
   const handleClick = (tempChoice) => {
     setUserChoice(tempChoice);
   };
-  const changeScore = (win) => {
-    if (win) {
-      setScore(score + 1);
-    } else {
-      setScore(score - 1);
-    }
-  };
-  const launchGame = (jeu) => {
+  // lance le jeu ou le reinitialise 
+  const launchGame = (tempUserChoice, modeJeu) => {
     if (game) {
       setGame(false);
     } else {
-      const tableau = jeu;
+      // change en fonction du mode de jeu
+      const tableau = modeJeu;
 
       // dans le tableau choisi au hasard un élément
       const tempComputerChoice = tableau[Math.floor(Math.random() * tableau.length)].choice;
       setComputerChoice(tempComputerChoice);
 
       // stock le résultat
-      const tempResult = winOrLose(userChoice, tempComputerChoice);
+      const tempResult = winOrLose(tempUserChoice, tempComputerChoice);
       setResult(tempResult);
 
       // selon le score actualise le score
@@ -40,6 +36,7 @@ function App() {
       setGame(true);
     }
   };
+  // calcule le résultat du jeu
   const winOrLose = (user, computer) => {
     if (user === computer) return "DRAW";
     switch (user) {
@@ -75,11 +72,14 @@ function App() {
         }
     }
   };
+
+  // info sur le jeu avec troix choix
   const jetonInfo3 = [
     { choice: "paper", img: paper, position: "0-3", color: "linear-gradient(to top, hsl(230, 89%, 62%), hsl(230, 89%, 65%))" },
     { choice: "scissors", img: scissors, position: "1-3", color: "linear-gradient(to top, hsl(39, 89%, 49%), hsl(40, 84%, 53%))" },
     { choice: "rock", img: rock, position: "2-3", color: "linear-gradient(to top, hsl(349, 71%, 52%), hsl(349, 70%, 56%))" },
   ];
+  // info sur le jeu avec cinq choix
   const jetonInfo5 = [
     { choice: "scissors", img: scissors, position: "0-5", color: "linear-gradient(to top, hsl(39, 89%, 49%), hsl(40, 84%, 53%))" },
     { choice: "paper", img: paper, position: "1-5", color: "linear-gradient(to top, hsl(230, 89%, 62%), hsl(230, 89%, 65%))" },
@@ -95,12 +95,13 @@ function App() {
   const [score, setScore] = useState(0);
   const [game, setGame] = useState(false);
 
+  // selon le gametype change le jeu en 3 ou 5 jeton
   const array = gameType ? jetonInfo3 : jetonInfo5;
 
   return (
     <>
       <Score score={score} choice={userChoice} />
-      <DivJetons handleClick={handleClick} launchGame={launchGame} array={array} userChoice={userChoice} computerChoice={computerChoice} game={game} result={result} />
+      <DivJetons handleClick={handleClick} launchGame={launchGame} array={array} userChoice={userChoice} computerChoice={computerChoice} game={game} result={result} gameType={gameType} />
     </>
   );
 }

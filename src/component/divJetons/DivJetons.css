@@ -10,6 +10,12 @@
   justify-content: center;
   align-items: center;
 }
+.bgTriangle {
+  background-image: url("../../assets/images/bg-triangle.svg");
+}
+.bgPentagone {
+  background-image: url("../../assets/images/bg-pentagon.svg");
+}
 .divJeton .jeton {
   position: absolute;
 }
@@ -23,6 +29,25 @@
 }
 .jeton2-3 {
   bottom: 50px;
+}
+.jeton0-5 {
+  top: 0;
+}
+.jeton1-5 {
+  top: 120px;
+  right: 0;
+}
+.jeton2-5 {
+  right: 50px;
+  bottom: 0;
+}
+.jeton3-5 {
+  left: 50px;
+  bottom: 0;
+}
+.jeton4-5 {
+  top: 120px;
+  left: 0px;
 }
 .divGame {
   margin-top: 50px;
