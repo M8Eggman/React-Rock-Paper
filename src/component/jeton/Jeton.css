@@ -1,6 +1,4 @@
 .jeton {
-  width: 200px;
-  height: 200px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -9,12 +7,39 @@
   cursor: pointer;
 }
 .jetonBody {
-  width: 150px;
-  height: 150px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   box-shadow: inset 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+/* taille quand mode 5 way sélectionner */
+.jeton-size-175 {
+  width: 175px;
+  height: 175px;
+}
+/* taille quand mode 3 way sélectionner */
+.jeton-size-200 {
+  width: 200px;
+  height: 200px;
+}
+/* taille quand résultat */
+.jeton-size-300 {
+  width: 300px;
+  height: 300px;
+}
+/* taille de l'intérieur du jeton*/
+.jeton-size-175 .jetonBody,
+.jeton-size-300 .jetonBody,
+.jeton-size-200 .jetonBody {
+  width: calc(100% - 25%);
+  height: calc(100% - 25%);
+}
+/* taille de l'image du jeton */
+.jeton-size-175 .jetonBody img,
+.jeton-size-300 .jetonBody img,
+.jeton-size-200 .jetonBody img {
+  width: calc(100% - 50%);
+  height: calc(100% - 50%);
 }

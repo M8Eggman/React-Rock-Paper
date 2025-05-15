@@ -96,7 +96,7 @@ function App() {
     { choice: "spock", img: spock, position: "4-5", color: "linear-gradient(to top, hsl(189, 59%, 53%), hsl(189, 58%, 57%))" },
   ];
 
-  const [userChoice, setUserChoice] = useState("paper");
+  const [userChoice, setUserChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
   const [ruleShow, setRuleShow] = useState(false);
   const [gameType, setGameType] = useState(false);
@@ -114,7 +114,14 @@ function App() {
       {/* modal qui s'affiche selon ruleShow */}
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
       <div className="options">
-        <button onClick={handleGameType} className="gameModeChange">
+        <button
+          onClick={() => {
+            // check si le jeu est lancer avant de pouvoir changer de mode de jeu
+            if (!game) {
+              handleGameType();
+            }
+          }}
+          className="gameModeChange">
           {gameType ? "5 way" : "3 way"}
         </button>
         {/*TODO <button className="lightModeChange">LightMode</button> */}
