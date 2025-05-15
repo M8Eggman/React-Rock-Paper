@@ -6,7 +6,7 @@ import paper from "./assets/images/icon-paper.svg";
 import rock from "./assets/images/icon-rock.svg";
 import lizard from "./assets/images/icon-lizard.svg";
 import spock from "./assets/images/icon-spock.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "./component/modal/Modal";
 
 function App() {
@@ -99,7 +99,7 @@ function App() {
   const [userChoice, setUserChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
   const [ruleShow, setRuleShow] = useState(false);
-  const [gameType, setGameType] = useState(false);
+  const [gameType, setGameType] = useState(true);
   const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
   const [game, setGame] = useState(false);
