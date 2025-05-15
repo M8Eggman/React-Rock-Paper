@@ -7,13 +7,17 @@ import rock from "./assets/images/icon-rock.svg";
 import lizard from "./assets/images/icon-lizard.svg";
 import spock from "./assets/images/icon-spock.svg";
 import { useEffect, useState } from "react";
+import Modal from "./component/modal/Modal";
 
 function App() {
   // change le choix de l'utilisateur
   const handleClick = (tempChoice) => {
     setUserChoice(tempChoice);
   };
-  // lance le jeu ou le reinitialise 
+  const handleRuleShow = () => {
+    ruleShow ? setRuleShow(false) : setRuleShow(true);
+  };
+  // lance le jeu ou le reinitialise
   const launchGame = (tempUserChoice, modeJeu) => {
     if (game) {
       setGame(false);
@@ -90,7 +94,8 @@ function App() {
 
   const [userChoice, setUserChoice] = useState("paper");
   const [computerChoice, setComputerChoice] = useState("");
-  const [gameType, setGameType] = useState(true);
+  const [ruleShow, setRuleShow] = useState(false);
+  const [gameType, setGameType] = useState(false);
   const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
   const [game, setGame] = useState(false);
@@ -102,6 +107,8 @@ function App() {
     <>
       <Score score={score} choice={userChoice} />
       <DivJetons handleClick={handleClick} launchGame={launchGame} array={array} userChoice={userChoice} computerChoice={computerChoice} game={game} result={result} gameType={gameType} />
+      {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
+      <button onClick={handleRuleShow} className="rules">RULES</button>
     </>
   );
 }
