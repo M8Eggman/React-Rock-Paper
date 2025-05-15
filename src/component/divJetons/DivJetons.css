@@ -9,16 +9,51 @@
   height: 500px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-.jeton {
+.divJeton .jeton {
   position: absolute;
 }
 .jeton0-3 {
-  left: 0px;
+  top: 0;
+  left: 0;
 }
 .jeton1-3 {
-  right: 0px;
+  top: 0;
+  right: 0;
 }
 .jeton2-3 {
   bottom: 50px;
+}
+.divGame {
+  margin-top: 50px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.divGame .userChoice,
+.divGame .computerChoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.divGame .userChoice p,
+.divGame .computerChoice p {
+  margin-bottom: 50px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.winOrLose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.winOrLose p {
+
+}
+.winOrLose button {
+  content: ;
 }
