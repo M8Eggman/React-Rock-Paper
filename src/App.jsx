@@ -17,6 +17,10 @@ function App() {
   const handleRuleShow = () => {
     ruleShow ? setRuleShow(false) : setRuleShow(true);
   };
+  const handleGameType = () => {
+    gameType ? setGameType(false) : setGameType(true);
+  };
+
   // lance le jeu ou le reinitialise
   const launchGame = (tempUserChoice, modeJeu) => {
     if (game) {
@@ -108,7 +112,15 @@ function App() {
       <Score score={score} choice={userChoice} />
       <DivJetons handleClick={handleClick} launchGame={launchGame} array={array} userChoice={userChoice} computerChoice={computerChoice} game={game} result={result} gameType={gameType} />
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
-      <button onClick={handleRuleShow} className="rules">RULES</button>
+      <div className="options">
+        <button onClick={handleGameType} className="gameModeChange">
+          {gameType ? "5 way" : "3 way"}
+        </button>
+        {/*TODO <button className="lightModeChange">LightMode</button> */}
+        <button onClick={handleRuleShow} className="rules">
+          RULES
+        </button>
+      </div>
     </>
   );
 }
