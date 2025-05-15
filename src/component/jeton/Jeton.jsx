@@ -6,7 +6,7 @@ function Jeton(props) {
       <div
         onClick={() => {
           props.handleClick(props.id);
-          props.launchGame();
+          props.launchGame(props.array);
         }}
         className={"jeton " + "jeton" + props.position}
         style={{ backgroundImage: `${props.color}` }}>
