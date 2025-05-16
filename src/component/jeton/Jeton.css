@@ -8,6 +8,9 @@
   position: relative;
   transition: transform 200ms;
 }
+.jeton img {
+  border: none;
+}
 .jeton:not(.jetonundefined):hover {
   filter: brightness(110%);
   transform: translateY(-10px);

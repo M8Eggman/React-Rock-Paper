@@ -39,9 +39,11 @@ function App() {
       const tempResult = winOrLose(tempUserChoice, tempComputerChoice);
       setResult(tempResult);
 
-      // selon le score actualise le score
-      tempResult === "YOU WIN" && setScore(score + 1);
-      tempResult === "YOU LOSE" && setScore(score - 1);
+      // selon le score actualise le score après 2 seconde
+      setTimeout(() => {
+        tempResult === "YOU WIN" && setScore(score + 1);
+        tempResult === "YOU LOSE" && setScore(score - 1);
+      }, 2000);
 
       setGame(true);
     }

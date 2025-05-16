@@ -78,6 +78,7 @@
   align-items: center;
 }
 .winOrLose p {
+  text-align: center;
   margin-block: 0px 20px;
   color: white;
   font-size: 60px;

@@ -10,9 +10,7 @@ function Jeton(props) {
         }}
         className={`jeton jeton${props.position} jeton-size-${props.size}`}
         style={{ backgroundImage: `${props.color}` }}>
-        <div className="jetonBody">
-          <img src={props.img} className="jetonImage" alt="" />
-        </div>
+        <div className="jetonBody">{props.img && <img src={props.img} className="jetonImage" alt="" />}</div>
       </div>
     </>
   );
