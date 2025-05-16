@@ -130,7 +130,7 @@ function App() {
 
   // stock les éléments dans localStorage
   const [gameType, setGameType] = useState(() => {
-    // locale storage return un string jsp pk ct merde ptn
+    // locale storage return un string jsp pk merde ptn
     return localStorage.getItem("gameType") == "true" ? true : false;
   });
   const [score, setScore] = useState(() => {

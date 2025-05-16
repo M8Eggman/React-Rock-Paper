@@ -91,4 +91,7 @@
     flex-direction: column;
     gap: 10px;
   }
+  .modalScore > button {
+    bottom: 50px;
+  }
 }
