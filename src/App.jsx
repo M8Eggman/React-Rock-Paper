@@ -137,10 +137,10 @@ function App() {
   // stock les éléments dans localStorage
   const [gameType, setGameType] = useState(() => {
     // locale storage return un string jsp pk merde ptn
-    return localStorage.getItem("gameType") === "true" ? true : false;
+    return localStorage.getItem("gameType") === "true";
   });
   const [lightMode, setLightMode] = useState(() => {
-    return localStorage.getItem("lightMode") === "true";
+    return localStorage.getItem("lightMode") === "true" ;
   });
   const [score, setScore] = useState(() => {
     return parseInt(localStorage.getItem("score")) || 0;
@@ -180,7 +180,7 @@ function App() {
       />
       {/* modal qui s'affiche selon ruleShow */}
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
-      {/* modal qui s'affiche selon ruleShow */}
+      {/* modal qui s'affiche selon scoreShow */}
       {scoreShow && <ModalScore scoreData={scoreData} game={game} handleScoreShow={handleScoreShow} resetScore={resetScore} />}
       <div className="options">
         <button
