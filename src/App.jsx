@@ -193,9 +193,9 @@ function App() {
           className="gameModeChange">
           {gameType ? "5 way" : "3 way"}
         </button>
-        <button onClick={handleLightMode} className="lightModeChange">
+        {/* <button onClick={handleLightMode} className="lightModeChange">
           LightMode
-        </button>
+        </button> */}
         <button onClick={handleScoreShow} className="scores">
           SCORE
         </button>
