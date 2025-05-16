@@ -49,8 +49,8 @@ function App() {
 
       // selon le score actualise le score après 2 seconde
       setTimeout(() => {
-        tempResult === "YOU WIN" && setScore(parseInt(score) + 1);
-        tempResult === "YOU LOSE" && setScore(parseInt(score) - 1);
+        tempResult === "YOU WIN" && setScore(score + 1);
+        tempResult === "YOU LOSE" && setScore(score - 1);
         // stock le nombre de victoire defaite selon le mode
         setScoreData((prev) => {
           // viens de chatgpt :( psk sinon react detecte pas ducoup faut faire une copie et faut copier chaque objet interne et pas juste l'objet en lui même sinon c'est pas une vrai copie
@@ -133,14 +133,13 @@ function App() {
   // stock les éléments dans localStorage
   const [gameType, setGameType] = useState(() => {
     // locale storage return un string jsp pk merde ptn
-    return localStorage.getItem("gameType") === "true" ? true : false;
+    return localStorage.getItem("gameType") === "true";
   });
   const [score, setScore] = useState(() => {
-    return localStorage.getItem("score") || 0;
+    return parseInt(localStorage.getItem("score")) || 0;
   });
   const [scoreData, setScoreData] = useState(() => {
-    const localStorageData = JSON.parse(localStorage.getItem("scoreData"));
-    return localStorageData || { way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } };
+    return JSON.parse(localStorage.getItem("scoreData")) || { way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } };
   });
   useEffect(() => {
     localStorage.setItem("gameType", gameType);
