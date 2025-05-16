@@ -93,6 +93,12 @@
   border-radius: 10px;
   font-size: 18px;
   cursor: pointer;
+  transition: 200ms;
+}
+.winOrLose button:hover {
+  background-color: hsl(229, 25%, 31%);
+  color: white;
+  transition: 200ms;
 }
 
 @media screen and (max-width: 992px) {
