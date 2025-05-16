@@ -49,7 +49,7 @@
     z-index: 10000;
   }
   .modalRuleTitle p {
-    margin-block: 50px;
+    margin-block: 8vh;
   }
   .modalRuleTitle button {
     border: none;

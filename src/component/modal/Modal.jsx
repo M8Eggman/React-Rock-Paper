@@ -6,8 +6,8 @@ function Modal(props) {
   return (
     <>
       <div onClick={props.handleRuleShow} className="modalRuleBackground">
-        <div onClick={(e) => e.stopPropagation()} className="modalRule">
-          <div className="modalRuleTitle">
+        <div className="modalRule">
+          <div onClick={(e) => e.stopPropagation()} className="modalRuleTitle">
             <p>RULES</p>
             <button onClick={props.handleRuleShow}>
               <img src={close} alt="" />

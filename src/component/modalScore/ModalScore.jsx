@@ -5,14 +5,14 @@ function ModalScore(props) {
   return (
     <>
       <div onClick={props.handleScoreShow} className="modalScoreBackground">
-        <div onClick={(e) => e.stopPropagation()} className="modalScore">
-          <div className="modalScoreTitle">
+        <div className="modalScore">
+          <div onClick={(e) => e.stopPropagation()} className="modalScoreTitle">
             <p>Score</p>
             <button onClick={props.handleScoreShow}>
               <img src={close} alt="" />
             </button>
           </div>
-          <div className="modalScoreResult">
+          <div onClick={(e) => e.stopPropagation()} className="modalScoreResult">
             <div className="scoreResult3way">
               <h2>Mode 3 Way</h2>
               <p>Win {props.scoreData.way3.win}</p>
@@ -26,7 +26,13 @@ function ModalScore(props) {
               <p>Draw {props.scoreData.way5.draw}</p>
             </div>
           </div>
-          <button onClick={!props.game ? props.resetScore : () => {}}>Reset Score</button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              props.resetScore;
+            }}>
+            Reset Score
+          </button>
         </div>
       </div>
     </>

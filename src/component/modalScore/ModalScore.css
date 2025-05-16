@@ -69,12 +69,13 @@
     height: 100vh;
     border-radius: 0;
     display: flex;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     z-index: 10000;
   }
   .modalScoreTitle p {
-    margin-block: 50px;
+    margin-block: 8vh;
   }
   .modalScoreTitle button {
     border: none;
