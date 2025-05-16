@@ -52,19 +52,22 @@ function App() {
         tempResult === "YOU WIN" && setScore(parseInt(score) + 1);
         tempResult === "YOU LOSE" && setScore(parseInt(score) - 1);
         // stock le nombre de victoire defaite selon le mode
-        switch (tempResult) {
-          case "YOU WIN":
-            gameType ? scoreData.way3.win++ : scoreData.way5.win++;
-            break;
-          case "YOU LOSE":
-            gameType ? scoreData.way3.lose++ : scoreData.way5.lose++;
-            break;
-          case "DRAW":
-            gameType ? scoreData.way3.draw++ : scoreData.way5.draw++;
-            break;
-        }
+        setScoreData((prev) => {
+          // viens de chatgpt :( psk sinon react detecte pas ducoup faut faire une copie et faut copier chaque objet interne et pas juste l'objet en lui même sinon c'est pas une vrai copie
+          const newScoreData = {
+            way3: { ...prev.way3 },
+            way5: { ...prev.way5 },
+          };
+          if (tempResult === "YOU WIN") {
+            gameType ? newScoreData.way3.win++ : newScoreData.way5.win++;
+          } else if (tempResult === "YOU LOSE") {
+            gameType ? newScoreData.way3.lose++ : newScoreData.way5.lose++;
+          } else if (tempResult === "DRAW") {
+            gameType ? newScoreData.way3.draw++ : newScoreData.way5.draw++;
+          }
+          return newScoreData;
+        });
       }, latence);
-
       setGame(true);
     }
   };
@@ -126,15 +129,18 @@ function App() {
   const [scoreShow, setScoreShow] = useState(false);
   const [game, setGame] = useState(false);
   const [latence, setLatence] = useState(2000);
-  const [scoreData, setScoreData] = useState({ way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } });
 
   // stock les éléments dans localStorage
   const [gameType, setGameType] = useState(() => {
     // locale storage return un string jsp pk merde ptn
-    return localStorage.getItem("gameType") == "true" ? true : false;
+    return localStorage.getItem("gameType") === "true" ? true : false;
   });
   const [score, setScore] = useState(() => {
     return localStorage.getItem("score") || 0;
+  });
+  const [scoreData, setScoreData] = useState(() => {
+    const localStorageData = JSON.parse(localStorage.getItem("scoreData"));
+    return localStorageData || { way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } };
   });
   useEffect(() => {
     localStorage.setItem("gameType", gameType);
@@ -142,6 +148,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem("score", score);
   }, [score]);
+  useEffect(() => {
+    localStorage.setItem("scoreData", JSON.stringify(scoreData));
+  }, [scoreData]);
 
   // selon le gametype change le jeu en 3 ou 5 jeton
   const array = gameType ? jetonInfo3 : jetonInfo5;
