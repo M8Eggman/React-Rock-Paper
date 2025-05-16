@@ -26,6 +26,7 @@ function ModalScore(props) {
               <p>Draw {props.scoreData.way5.draw}</p>
             </div>
           </div>
+          <button onClick={!props.game ? props.resetScore : () => {}}>Reset Score</button>
         </div>
       </div>
     </>

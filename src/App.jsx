@@ -27,7 +27,10 @@ function App() {
   const handleScoreShow = () => {
     scoreShow ? setScoreShow(false) : setScoreShow(true);
   };
-
+  const resetScore = () => {
+    setScore(0);
+    setScoreData({ way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } });
+  };
   // lance le jeu ou le reinitialise
   const launchGame = (tempUserChoice, modeJeu) => {
     if (game) {
@@ -160,7 +163,7 @@ function App() {
       {/* modal qui s'affiche selon ruleShow */}
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
       {/* modal qui s'affiche selon ruleShow */}
-      {scoreShow && <ModalScore scoreData={scoreData} handleScoreShow={handleScoreShow} />}
+      {scoreShow && <ModalScore scoreData={scoreData} game={game} handleScoreShow={handleScoreShow} resetScore={resetScore} />}
       <div className="options">
         <button
           onClick={() => {

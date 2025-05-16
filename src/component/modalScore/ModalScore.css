@@ -13,8 +13,20 @@
 .modalScore {
   background-color: white;
   border-radius: 10px;
-  padding: 30px;
+  padding: 30px 30px 90px 30px;
   box-sizing: border-box;
+  position: relative;
+}
+.modalScore > button {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: hsl(229, 25%, 31%);
+  font-weight: 700;
+  font-size: 20px;
 }
 .modalScoreTitle {
   display: flex;
