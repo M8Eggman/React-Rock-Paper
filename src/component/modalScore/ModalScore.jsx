@@ -28,8 +28,8 @@ function ModalScore(props) {
           </div>
           <button
             onClick={(e) => {
+              props.resetScore();
               e.stopPropagation();
-              props.resetScore;
             }}>
             Reset Score
           </button>
