@@ -40,7 +40,7 @@ function DivJetons(props) {
             {props.array
               .filter((filter) => filter.choice === props.computerChoice)
               .map((element, index) => (
-                <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300}/>
+                <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300} />
               ))}
           </div>
         </>
@@ -55,7 +55,7 @@ function DivJetons(props) {
           </div>
           <div className="computerChoice">
             <p>THE HOUSE PICKED</p>
-            <Jeton handleClick={() => {}} launchGame={() => {}} color={"linear-gradient(to top, #000, #333)"} size={300} className={"jetonTemp"}/>
+            <Jeton handleClick={() => {}} launchGame={() => {}} color={"linear-gradient(to top, #000, #333)"} size={300} className={"jetonTemp"} />
           </div>
         </>
       )}

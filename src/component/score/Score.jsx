@@ -11,7 +11,7 @@ function Score(props) {
           <br />
           SCISSORS
         </h1>
-        <div className="score">
+        <div onClick={props.handleScoreShow} className="score">
           <p>SCORE</p>
           <p>{props.score}</p>
         </div>

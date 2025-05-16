@@ -1,0 +1,82 @@
+.modalScoreBackground {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.modalScore {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.modalScoreTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.modalScoreTitle p {
+  color: hsl(229, 25%, 31%);
+  font-weight: 700;
+  font-size: 30px;
+  margin: 0;
+}
+.modalScoreTitle button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 200ms;
+}
+.modalScoreTitle button:hover {
+  filter: brightness(0%);
+  transition: 200ms;
+}
+.modalScoreResult {
+  display: flex;
+  gap: 25px;
+}
+.modalScoreResult h2 {
+  font-weight: 700;
+  font-size: 25px;
+}
+.modalScoreResult p {
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+@media screen and (max-width: 576px) {
+  .modalScore {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10000;
+  }
+  .modalScoreTitle p {
+    margin-block: 50px;
+  }
+  .modalScoreTitle button {
+    border: none;
+    background: none;
+    position: absolute;
+    bottom: 50px;
+  }
+  .modalScoreTitle button img {
+    width: 30px;
+    height: 30px;
+  }
+  .modalScoreResult {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

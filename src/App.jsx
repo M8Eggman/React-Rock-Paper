@@ -8,6 +8,7 @@ import lizard from "./assets/images/icon-lizard.svg";
 import spock from "./assets/images/icon-spock.svg";
 import { useState } from "react";
 import Modal from "./component/modal/Modal";
+import ModalScore from "./component/modalScore/ModalScore";
 
 function App() {
   // change le choix de l'utilisateur
@@ -21,6 +22,10 @@ function App() {
   // change la variable qui s'occupe de lancer le jeu
   const handleGameType = () => {
     gameType ? setGameType(false) : setGameType(true);
+  };
+  // change la variable qui s'occupe d'afficher le score'
+  const handleScoreShow = () => {
+    scoreShow ? setScoreShow(false) : setScoreShow(true);
   };
 
   // lance le jeu ou le reinitialise
@@ -43,6 +48,18 @@ function App() {
       setTimeout(() => {
         tempResult === "YOU WIN" && setScore(score + 1);
         tempResult === "YOU LOSE" && setScore(score - 1);
+        // stock le nombre de victoire defaite selon le mode
+        switch (tempResult) {
+          case "YOU WIN":
+            gameType ? (scoreData.way3.win += 1) : (scoreData.way5.win += 1);
+            break;
+          case "YOU LOSE":
+            gameType ? (scoreData.way3.lose += 1) : (scoreData.way5.lose += 1);
+            break;
+          case "DRAW":
+            gameType ? (scoreData.way3.draw += 1) : (scoreData.way5.draw += 1);
+            break;
+        }
       }, latence);
 
       setGame(true);
@@ -99,14 +116,17 @@ function App() {
     { choice: "lizard", img: lizard, position: "3-5", color: "linear-gradient(to top, hsl(261, 73%, 60%), hsl(261, 72%, 63%))" },
     { choice: "spock", img: spock, position: "4-5", color: "linear-gradient(to top, hsl(189, 59%, 53%), hsl(189, 58%, 57%))" },
   ];
+  // info sur les victoire defaite egalité de chaque mode
 
   const [userChoice, setUserChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
   const [ruleShow, setRuleShow] = useState(false);
+  const [scoreShow, setScoreShow] = useState(false);
   const [gameType, setGameType] = useState(true);
   const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
   const [game, setGame] = useState(false);
+  const [scoreData, setScoreData] = useState({ way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } });
   const [latence, setLatence] = useState(2000);
 
   // selon le gametype change le jeu en 3 ou 5 jeton
@@ -114,7 +134,7 @@ function App() {
 
   return (
     <>
-      <Score score={score} choice={userChoice} />
+      <Score handleScoreShow={handleScoreShow} score={score} choice={userChoice} />
       <DivJetons
         handleClick={handleClick}
         launchGame={launchGame}
@@ -128,6 +148,8 @@ function App() {
       />
       {/* modal qui s'affiche selon ruleShow */}
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
+      {/* modal qui s'affiche selon ruleShow */}
+      {scoreShow && <ModalScore scoreData={scoreData} handleScoreShow={handleScoreShow} />}
       <div className="options">
         <button
           onClick={() => {
