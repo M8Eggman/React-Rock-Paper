@@ -15,7 +15,7 @@ function DivJetons(props) {
       setShowResult(false);
     }
   }, [props.game]);
-  
+
   // selon si le jeu est lancer va afficher les choix ou le resultat
   return props.game ? (
     <div className="divGame">
@@ -25,7 +25,15 @@ function DivJetons(props) {
         {props.array
           .filter((filter) => filter.choice === props.userChoice)
           .map((element, index) => (
-            <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300} />
+            <Jeton
+              handleClick={() => {}}
+              launchGame={() => {}}
+              key={index}
+              img={element.img}
+              color={element.color}
+              size={300}
+              className={showResult && props.result === "YOU WIN" ? "jetonWinner" : ""}
+            />
           ))}
       </div>
       {/* selon showResult affiche soit le resultat sois un ecran de chargement */}
@@ -41,7 +49,15 @@ function DivJetons(props) {
             {props.array
               .filter((filter) => filter.choice === props.computerChoice)
               .map((element, index) => (
-                <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300} />
+                <Jeton
+                  handleClick={() => {}}
+                  launchGame={() => {}}
+                  key={index}
+                  img={element.img}
+                  color={element.color}
+                  size={300}
+                  className={showResult && props.result === "YOU LOSE" ? "jetonWinner" : ""}
+                />
               ))}
           </div>
         </>

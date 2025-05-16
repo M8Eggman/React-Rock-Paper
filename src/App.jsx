@@ -137,10 +137,9 @@ function App() {
   // stock les éléments dans localStorage
   const [gameType, setGameType] = useState(() => {
     // locale storage return un string jsp pk merde ptn
-    return localStorage.getItem("gameType") === "true";
+    return localStorage.getItem("gameType") === "true" ? true : false;
   });
   const [lightMode, setLightMode] = useState(() => {
-    // locale storage return un string jsp pk merde ptn
     return localStorage.getItem("lightMode") === "true";
   });
   const [score, setScore] = useState(() => {

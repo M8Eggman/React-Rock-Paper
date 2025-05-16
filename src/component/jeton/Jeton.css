@@ -20,6 +20,14 @@
     transform: translateY(-10px);
   }
 }
+@keyframes xb222 {
+  0% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.2), 0px 0px 0px 0px rgba(255, 255, 255, 0.2), 0px 0px 0px 0px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 20px rgba(255, 255, 255, 0), 0px 0px 0px 40px rgba(255, 255, 255, 0), 0px 0px 0px 60px rgba(255, 255, 255, 0);
+  }
+}
 .jeton {
   border-radius: 50%;
   display: flex;
@@ -30,6 +38,9 @@
 }
 .jetonTemp {
   animation: tournerDansLeVide 2s infinite;
+}
+.jetonWinner {
+  animation: xb222 1.5s ease forwards infinite;
 }
 .jeton:not(.jetonundefined) {
   cursor: pointer;
