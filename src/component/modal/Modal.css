@@ -1,33 +1,58 @@
 .modalRuleBackground {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
 }
 .modalRule {
-    background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-sizing: 30px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
 }
 .modalRuleTitle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 .modalRuleTitle p {
-    color: hsl(229, 25%, 31%);
-    font-weight: 700;
-    font-size: 30px;
-    margin: 0;
+  color: hsl(229, 25%, 31%);
+  font-weight: 700;
+  font-size: 30px;
+  margin: 0;
 }
-.modalRuleTitle button{
+.modalRuleTitle button {
+  border: none;
+  background: none;
+}
+@media screen and (max-width: 576px) {
+  .modalRule {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10000;
+  }
+  .modalRuleTitle p {
+    margin-block: 50px;
+  }
+  .modalRuleTitle button {
     border: none;
     background: none;
+    position: absolute;
+    bottom: 50px;
+  }
+  .modalRuleTitle button img {
+    width: 30px;
+    height: 30px;
+  }
 }

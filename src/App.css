@@ -17,6 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   z-index: 1;
+    gap: 10px;
 }
 .options button {
   background: none;
@@ -26,7 +27,29 @@ body {
   padding: 10px 50px;
   font-weight: 600;
   font-size: 18px;
-  margin-bottom: 10px;
   z-index: 1;
   cursor: pointer;
+}
+@media screen and (max-width: 992px) {
+  .options {
+    bottom: 10px;
+    right: 10px;
+  }
+  .options button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .options {
+    right: inherit;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .options button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
 }

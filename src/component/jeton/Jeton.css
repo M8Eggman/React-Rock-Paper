@@ -43,3 +43,37 @@
   width: calc(100% - 50%);
   height: calc(100% - 50%);
 }
+@media screen and (max-width: 992px) {
+  /* taille quand mode 5 way sélectionner */
+  .jeton-size-175 {
+    width: 150px;
+    height: 150px;
+  }
+  /* taille quand mode 3 way sélectionner */
+  .jeton-size-200 {
+    width: 175px;
+    height: 175px;
+  }
+  /* taille quand résultat */
+  .jeton-size-300 {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media screen and (max-width: 576px) {
+  /* taille quand mode 5 way sélectionner */
+  .jeton-size-175 {
+    width: 25vw;
+    height: 25vw;
+  }
+  /* taille quand mode 3 way sélectionner */
+  .jeton-size-200 {
+    width: 30vw;
+    height: 30vw;
+  }
+  /* taille quand résultat */
+  .jeton-size-300 {
+    width: 40vw;
+    height: 40vw;
+  }
+}

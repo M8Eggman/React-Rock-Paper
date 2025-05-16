@@ -124,7 +124,7 @@ function App() {
           className="gameModeChange">
           {gameType ? "5 way" : "3 way"}
         </button>
-        {/*TODO <button className="lightModeChange">LightMode</button> */}
+        <button className="lightModeChange">LightMode</button>
         <button onClick={handleRuleShow} className="rules">
           RULES
         </button>
