@@ -43,7 +43,7 @@ function App() {
       setTimeout(() => {
         tempResult === "YOU WIN" && setScore(score + 1);
         tempResult === "YOU LOSE" && setScore(score - 1);
-      }, 2000);
+      }, latence);
 
       setGame(true);
     }
@@ -107,6 +107,7 @@ function App() {
   const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
   const [game, setGame] = useState(false);
+  const [latence, setLatence] = useState(2000);
 
   // selon le gametype change le jeu en 3 ou 5 jeton
   const array = gameType ? jetonInfo3 : jetonInfo5;
@@ -114,7 +115,17 @@ function App() {
   return (
     <>
       <Score score={score} choice={userChoice} />
-      <DivJetons handleClick={handleClick} launchGame={launchGame} array={array} userChoice={userChoice} computerChoice={computerChoice} game={game} result={result} gameType={gameType} />
+      <DivJetons
+        handleClick={handleClick}
+        launchGame={launchGame}
+        array={array}
+        userChoice={userChoice}
+        computerChoice={computerChoice}
+        game={game}
+        result={result}
+        gameType={gameType}
+        latence={latence}
+      />
       {/* modal qui s'affiche selon ruleShow */}
       {ruleShow && <Modal gameType={gameType} handleRuleShow={handleRuleShow} />}
       <div className="options">

@@ -104,7 +104,7 @@
 
 @media screen and (max-width: 992px) {
   .divGame {
-    margin-top: 25px;
+    margin-top: 50px;
     position: relative;
     gap: 25px;
     justify-content: center;
@@ -121,7 +121,7 @@
     margin-inline: 0px;
     top: inherit;
     position: absolute;
-    bottom: -200px;
+    bottom: -180px;
   }
   .winOrLose p {
     font-size: 50px;

@@ -9,7 +9,7 @@ function DivJetons(props) {
       // dès que game est lancer lance le timer puis met true a showresult
       setTimeout(() => {
         setShowResult(true);
-      }, 2000);
+      }, props.latence);
     } else {
       // réinitialise show result dès que game est en false
       setShowResult(false);
@@ -40,18 +40,22 @@ function DivJetons(props) {
             {props.array
               .filter((filter) => filter.choice === props.computerChoice)
               .map((element, index) => (
-                <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300} />
+                <Jeton handleClick={() => {}} launchGame={() => {}} key={index} img={element.img} color={element.color} size={300}/>
               ))}
           </div>
         </>
       ) : (
         <>
           <div className="winOrLose">
-            <p>Computer<br /> Choosing</p>
+            <p>
+              Computer
+              <br />
+              Choosing
+            </p>
           </div>
           <div className="computerChoice">
             <p>THE HOUSE PICKED</p>
-            <Jeton handleClick={() => {}} launchGame={() => {}} color={"linear-gradient(to top, #000, #333)"} size={300} />
+            <Jeton handleClick={() => {}} launchGame={() => {}} color={"linear-gradient(to top, #000, #333)"} size={300} className={"jetonTemp"}/>
           </div>
         </>
       )}

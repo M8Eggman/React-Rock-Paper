@@ -1,20 +1,42 @@
+@keyframes tournerDansLeVide {
+  0% {
+    transform: translateY(0) rotateY(0);
+  }
+  25% {
+    transform: translateY(-50px) rotateY(360deg);
+  }
+  50% {
+    transform: translateY(0px) rotateY(360deg);
+  }
+  75% {
+    transform: translateY(-50px) rotateY(720deg);
+  }
+  100% {
+    transform: translateY(0) rotateY(720deg);
+  }
+}
+@keyframes jsp {
+  100% {
+    transform: translateY(-10px);
+  }
+}
 .jeton {
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: inset 0px -8px 1px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
   position: relative;
-  transition: transform 200ms;
 }
-.jeton img {
-  border: none;
+.jetonTemp {
+  animation: tournerDansLeVide 2s infinite;
+}
+.jeton:not(.jetonundefined) {
+  cursor: pointer;
 }
 .jeton:not(.jetonundefined):hover {
   filter: brightness(110%);
-  transform: translateY(-10px);
-  transition: transform 200ms;
+  animation: jsp 1s infinite alternate ease-in-out;
 }
 .jetonBody {
   border-radius: 50%;

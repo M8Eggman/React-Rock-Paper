@@ -8,7 +8,7 @@ function Jeton(props) {
           props.handleClick(props.id);
           props.launchGame(props.id, props.array);
         }}
-        className={`jeton jeton${props.position} jeton-size-${props.size}`}
+        className={`jeton jeton${props.position} jeton-size-${props.size} ${props.className}`}
         style={{ backgroundImage: `${props.color}` }}>
         <div className="jetonBody">{props.img && <img src={props.img} className="jetonImage" alt="" />}</div>
       </div>
