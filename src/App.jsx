@@ -6,7 +6,7 @@ import paper from "./assets/images/icon-paper.svg";
 import rock from "./assets/images/icon-rock.svg";
 import lizard from "./assets/images/icon-lizard.svg";
 import spock from "./assets/images/icon-spock.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./component/modal/Modal";
 import ModalScore from "./component/modalScore/ModalScore";
 
@@ -46,18 +46,18 @@ function App() {
 
       // selon le score actualise le score après 2 seconde
       setTimeout(() => {
-        tempResult === "YOU WIN" && setScore(score + 1);
-        tempResult === "YOU LOSE" && setScore(score - 1);
+        tempResult === "YOU WIN" && setScore(parseInt(score) + 1);
+        tempResult === "YOU LOSE" && setScore(parseInt(score) - 1);
         // stock le nombre de victoire defaite selon le mode
         switch (tempResult) {
           case "YOU WIN":
-            gameType ? (scoreData.way3.win += 1) : (scoreData.way5.win += 1);
+            gameType ? scoreData.way3.win++ : scoreData.way5.win++;
             break;
           case "YOU LOSE":
-            gameType ? (scoreData.way3.lose += 1) : (scoreData.way5.lose += 1);
+            gameType ? scoreData.way3.lose++ : scoreData.way5.lose++;
             break;
           case "DRAW":
-            gameType ? (scoreData.way3.draw += 1) : (scoreData.way5.draw += 1);
+            gameType ? scoreData.way3.draw++ : scoreData.way5.draw++;
             break;
         }
       }, latence);
@@ -116,18 +116,29 @@ function App() {
     { choice: "lizard", img: lizard, position: "3-5", color: "linear-gradient(to top, hsl(261, 73%, 60%), hsl(261, 72%, 63%))" },
     { choice: "spock", img: spock, position: "4-5", color: "linear-gradient(to top, hsl(189, 59%, 53%), hsl(189, 58%, 57%))" },
   ];
-  // info sur les victoire defaite egalité de chaque mode
-
   const [userChoice, setUserChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
+  const [result, setResult] = useState("");
   const [ruleShow, setRuleShow] = useState(false);
   const [scoreShow, setScoreShow] = useState(false);
-  const [gameType, setGameType] = useState(true);
-  const [result, setResult] = useState("");
-  const [score, setScore] = useState(0);
   const [game, setGame] = useState(false);
-  const [scoreData, setScoreData] = useState({ way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } });
   const [latence, setLatence] = useState(2000);
+  const [scoreData, setScoreData] = useState({ way3: { win: 0, lose: 0, draw: 0 }, way5: { win: 0, lose: 0, draw: 0 } });
+
+  // stock les éléments dans localStorage
+  const [gameType, setGameType] = useState(() => {
+    // locale storage return un string jsp pk ct merde ptn
+    return localStorage.getItem("gameType") == "true" ? true : false;
+  });
+  const [score, setScore] = useState(() => {
+    return localStorage.getItem("score") || 0;
+  });
+  useEffect(() => {
+    localStorage.setItem("gameType", gameType);
+  }, [gameType]);
+  useEffect(() => {
+    localStorage.setItem("score", score);
+  }, [score]);
 
   // selon le gametype change le jeu en 3 ou 5 jeton
   const array = gameType ? jetonInfo3 : jetonInfo5;

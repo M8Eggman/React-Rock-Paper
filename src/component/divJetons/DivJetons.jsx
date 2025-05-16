@@ -15,6 +15,7 @@ function DivJetons(props) {
       setShowResult(false);
     }
   }, [props.game]);
+  
   // selon si le jeu est lancer va afficher les choix ou le resultat
   return props.game ? (
     <div className="divGame">
