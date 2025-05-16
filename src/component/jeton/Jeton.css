@@ -5,6 +5,13 @@
   align-items: center;
   box-shadow: inset 0px -8px 1px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  position: relative;
+  transition: transform 200ms;
+}
+.jeton:not(.jetonundefined):hover {
+  filter: brightness(110%);
+  transform: translateY(-10px);
+  transition: transform 200ms;
 }
 .jetonBody {
   border-radius: 50%;
