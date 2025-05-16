@@ -14,9 +14,11 @@ function App() {
   const handleClick = (tempChoice) => {
     setUserChoice(tempChoice);
   };
+  // change la variable qui s'occupe de montrer les règles
   const handleRuleShow = () => {
     ruleShow ? setRuleShow(false) : setRuleShow(true);
   };
+  // change la variable qui s'occupe de lancer le jeu
   const handleGameType = () => {
     gameType ? setGameType(false) : setGameType(true);
   };
@@ -124,7 +126,7 @@ function App() {
           className="gameModeChange">
           {gameType ? "5 way" : "3 way"}
         </button>
-        <button className="lightModeChange">LightMode</button>
+        {/* <button className="lightModeChange">LightMode</button> */}
         <button onClick={handleRuleShow} className="rules">
           RULES
         </button>
