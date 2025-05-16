@@ -23,9 +23,13 @@ function App() {
   const handleGameType = () => {
     gameType ? setGameType(false) : setGameType(true);
   };
-  // change la variable qui s'occupe d'afficher le score'
+  // change la variable qui s'occupe d'afficher le score
   const handleScoreShow = () => {
     scoreShow ? setScoreShow(false) : setScoreShow(true);
+  };
+  // change la variable qui s'occupe d'afficher le score
+  const handleLightMode = () => {
+    lightMode ? setLightMode(false) : setLightMode(true);
   };
   const resetScore = () => {
     setScore(0);
@@ -135,6 +139,10 @@ function App() {
     // locale storage return un string jsp pk merde ptn
     return localStorage.getItem("gameType") === "true";
   });
+  const [lightMode, setLightMode] = useState(() => {
+    // locale storage return un string jsp pk merde ptn
+    return localStorage.getItem("lightMode") === "true";
+  });
   const [score, setScore] = useState(() => {
     return parseInt(localStorage.getItem("score")) || 0;
   });
@@ -144,6 +152,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem("gameType", gameType);
   }, [gameType]);
+  useEffect(() => {
+    localStorage.setItem("lightMode", lightMode);
+  }, [lightMode]);
   useEffect(() => {
     localStorage.setItem("score", score);
   }, [score]);
@@ -183,7 +194,9 @@ function App() {
           className="gameModeChange">
           {gameType ? "5 way" : "3 way"}
         </button>
-        {/* <button className="lightModeChange">LightMode</button> */}
+        <button onClick={handleLightMode} className="lightModeChange">
+          LightMode
+        </button>
         <button onClick={handleScoreShow} className="scores">
           SCORE
         </button>
